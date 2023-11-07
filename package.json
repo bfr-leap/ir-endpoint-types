@@ -1,6 +1,6 @@
 {
     "name": "ir-endpoints-types",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "TypeScript interfaces for iRacing Web API",
     "main": "iracing-endpoints.ts",
     "types": "iracing-endpoints.ts",
