@@ -1,0 +1,13 @@
+{
+    "name": "ir-endpoints-types",
+    "version": "0.1.0",
+    "description": "TypeScript interfaces for iRacing Web API",
+    "main": "iracing-endpoints.ts",
+    "types": "iracing-endpoints.ts",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/bfr-leap/ir-endpoint-types.git"
+    },
+    "private": true
+  }
+  
