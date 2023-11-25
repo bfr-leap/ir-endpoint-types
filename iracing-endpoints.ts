@@ -429,3 +429,18 @@ export type CuratedTrackDisplayhInfo = {
 export interface GeneratedSimsessionSummary {
     text: string;
 }
+
+export interface ET_DriverTelemetryDatum {
+    driverId: number;
+    perc: number;
+    percD: number;
+}
+
+export interface EpochTelemetry {
+    numLaps: number;
+    checkeredFlag: number;
+    epochList: {
+        time: number;
+        data: ET_DriverTelemetryDatum[];
+    }[];
+}
