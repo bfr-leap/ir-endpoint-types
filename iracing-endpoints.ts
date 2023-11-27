@@ -444,3 +444,17 @@ export interface EpochTelemetry {
         data: ET_DriverTelemetryDatum[];
     }[];
 }
+
+export interface OTE_OnTrackRaceEvent {
+    directDriverId: number;
+    indirectDriverId?: number;
+    time: number;
+    perc: number;
+    actionType: string;
+    lapNumber: number;
+    position: number;
+    notes: string[];
+    indirectNotes: string[];
+}
+
+export type OnTrackRaceEvents = OTE_OnTrackRaceEvent[];
