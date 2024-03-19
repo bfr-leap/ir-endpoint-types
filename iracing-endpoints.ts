@@ -415,9 +415,27 @@ export interface ST_DriverTelemetry {
     laps: ST_LapTelemetry[];
 }
 
+export interface ST_EpochTelemetryDatum {
+    uid: number; 
+    percentPos:number; 
+    percentPosDelta:number;
+}
+
+export interface ST_EpochTelemetryData {
+    time: number;
+    data: ST_EpochTelemetryDatum[];
+} 
+
+export interface ST_EpochTelemetry {
+    numLaps: number;
+    checkeredFlagTime: number;
+    epochList: ST_EpochTelemetryData[];
+}
+
 export interface ST_SimsessionTelemetry {
     id: number;
     drivers: ST_DriverTelemetry[];
+    epochTelemetry?: ST_EpochTelemetry;
 }
 
 export type SubsessionTelemetry = ST_SimsessionTelemetry[];
