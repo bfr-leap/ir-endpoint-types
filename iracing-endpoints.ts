@@ -416,15 +416,15 @@ export interface ST_DriverTelemetry {
 }
 
 export interface ST_EpochTelemetryDatum {
-    uid: number; 
-    percentPos:number; 
-    percentPosDelta:number;
+    uid: number;
+    percentPos: number;
+    percentPosDelta: number;
 }
 
 export interface ST_EpochTelemetryData {
     time: number;
     data: ST_EpochTelemetryDatum[];
-} 
+}
 
 export interface ST_EpochTelemetry {
     numLaps: number;
@@ -476,3 +476,11 @@ export interface OTE_OnTrackRaceEvent {
 }
 
 export type OnTrackRaceEvents = OTE_OnTrackRaceEvent[];
+
+export interface PodcastScriptedSrc {
+    audioList: {
+        audioLocation: string;
+        text: string;
+        poses: string[];
+    }
+}
