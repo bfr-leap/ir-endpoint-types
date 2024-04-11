@@ -479,8 +479,8 @@ export type OnTrackRaceEvents = OTE_OnTrackRaceEvent[];
 
 export interface PodcastScriptedSrc {
     audioList: {
-        audioLocation: string;
+        location: string;
         text: string;
         poses: string[];
-    }
+    }[]
 }
