@@ -446,6 +446,8 @@ export type CuratedTrackDisplayhInfo = {
 
 export interface GeneratedSimsessionSummary {
     text: string;
+    title?: string;
+    highlightWord?: string;
 }
 
 export interface ET_DriverTelemetryDatum {
