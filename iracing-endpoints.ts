@@ -488,3 +488,5 @@ export interface PodcastScriptedSrc {
         poses: string[];
     }[]
 }
+
+export type ChartTable = { [key: string]: number | string }[];
