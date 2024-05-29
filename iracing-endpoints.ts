@@ -486,6 +486,8 @@ export interface PodcastScriptedSrc {
         location: string;
         text: string;
         poses: string[];
+        time: number;
+        lookAt: number;
     }[]
 }
 
