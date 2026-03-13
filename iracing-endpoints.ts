@@ -371,7 +371,6 @@ export interface CLTI_Team {
     team_id: number;
     team_name: string;
     team_members: number[];
-    team_logo: string;
 }
 
 export interface SimsessionResults {
