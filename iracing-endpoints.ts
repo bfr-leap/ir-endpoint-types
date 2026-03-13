@@ -560,4 +560,14 @@ export interface SimsessionHighlight {
     intro?: string;
 }
 
+export interface PodcastScriptedSrc {
+    audioList: {
+        location: string;
+        text: string;
+        poses: string[];
+        time: number;
+        lookAt: number;
+    }[];
+}
+
 export type ChartTable = { [key: string]: number | string }[];
