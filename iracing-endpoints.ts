@@ -455,12 +455,14 @@ export interface ALS_LeagueInfo {
     name: string;
     journalistStyleName: string;
     journalistFineTunning: string;
+    otherFinetunning?: string;
     seasons: ALS_SeasonInfo[];
 }
 
 export interface ALS_SeasonInfo {
     season_id: number;
     car_id: number;
+    comment: string;
     events: ALS_EventInfo[];
 }
 
@@ -468,7 +470,6 @@ export interface ALS_EventInfo {
     comment: string;
     track_id: number;
     time: string;
-    event_id: string;
 }
 
 export interface ST_TelemetryDatum {
