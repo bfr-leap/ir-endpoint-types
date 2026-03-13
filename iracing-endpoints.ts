@@ -9,6 +9,7 @@ export interface LeagueSeasons {
 export interface LeagueSeasonSessions {
     sessions: LSS_Session[];
     success: boolean;
+    subscribed: boolean;
     season_id: number;
     league_id: number;
 }
@@ -112,24 +113,25 @@ export interface LCD_Track {
 
 export interface LSS_Session {
     cars: LSS_Car[];
-    consec_cautions_single_file: boolean;
-    damage_model: number;
-    do_not_count_caution_laps: boolean;
-    do_not_paint_cars: boolean;
+    consec_cautions_single_file?: boolean;
+    damage_model?: number;
+    do_not_count_caution_laps?: boolean;
+    do_not_paint_cars?: boolean;
     driver_changes: boolean;
     entry_count: number;
-    green_white_checkered_limit: number;
-    has_results: true;
+    green_white_checkered_limit?: number;
+    has_results: boolean;
+    heat_ses_info?: LSS_HeatSessionInfo;
     launch_at: string;
     league_id: number;
     league_season_id: number;
     lone_qualify: boolean;
-    max_ai_drivers: number;
-    must_use_diff_tire_types_in_race: boolean;
-    no_lapper_wave_arounds: boolean;
-    num_opt_laps: number;
-    pace_car_class_id: null;
-    pace_car_id: null;
+    max_ai_drivers?: number;
+    must_use_diff_tire_types_in_race?: boolean;
+    no_lapper_wave_arounds?: boolean;
+    num_opt_laps?: number;
+    pace_car_class_id: null | number;
+    pace_car_id: null | number;
     password_protected: boolean;
     practice_length: number;
     private_session_id: number;
@@ -138,20 +140,20 @@ export interface LSS_Session {
     race_laps: number;
     race_length: number;
     session_id: number;
-    short_parade_lap: boolean;
-    start_on_qual_tire: boolean;
-    start_zone: boolean;
+    short_parade_lap?: boolean;
+    start_on_qual_tire?: boolean;
+    start_zone?: boolean;
     status: number;
     subsession_id: number;
     team_entry_count: number;
-    telemetry_force_to_disk: number;
-    telemetry_restriction: number;
+    telemetry_force_to_disk?: number;
+    telemetry_restriction?: number;
     time_limit: number;
     track: LSS_Track;
     track_state: LSS_TrackState;
     weather: LSS_Weather;
-    winner_id: number;
-    winner_name: string;
+    winner_id?: number;
+    winner_name?: string;
 }
 
 export interface LSS_Weather {
@@ -170,6 +172,68 @@ export interface LSS_Weather {
     allow_fog: boolean;
     track_water: number;
     precip_option: number;
+    weather_summary?: LSS_WeatherSummary;
+    weather_url?: string;
+}
+
+export interface LSS_WeatherSummary {
+    max_precip_rate: number;
+    max_precip_rate_desc: string;
+    precip_chance: number;
+    skies_high: number;
+    skies_low: number;
+    temp_high: number;
+    temp_low: number;
+    temp_units: number;
+    wind_dir: number;
+    wind_high: number;
+    wind_low: number;
+    wind_units: number;
+}
+
+export interface LSS_HeatSessionInfo {
+    consolation_delta_max_field_size: number;
+    consolation_delta_session_laps: number;
+    consolation_delta_session_length_minutes: number;
+    consolation_first_max_field_size: number;
+    consolation_first_session_laps: number;
+    consolation_first_session_length_minutes: number;
+    consolation_num_position_to_invert: number;
+    consolation_num_to_consolation: number;
+    consolation_num_to_main: number;
+    consolation_run_always: boolean;
+    consolation_scores_champ_points: boolean;
+    created: string;
+    cust_id: number;
+    heat_caution_type: number;
+    heat_info_id: number;
+    heat_info_name: string;
+    heat_laps: number;
+    heat_length_minutes: number;
+    heat_max_field_size: number;
+    heat_num_from_each_to_main: number;
+    heat_num_position_to_invert: number;
+    heat_scores_champ_points: boolean;
+    heat_session_minutes_estimate: number;
+    hidden: boolean;
+    main_laps: number;
+    main_length_minutes: number;
+    main_max_field_size: number;
+    main_num_position_to_invert: number;
+    max_entrants: number;
+    open_practice: boolean;
+    pre_main_practice_length_minutes: number;
+    pre_qual_num_to_main: number;
+    pre_qual_practice_length_minutes: number;
+    qual_caution_type: number;
+    qual_laps: number;
+    qual_length_minutes: number;
+    qual_num_to_main: number;
+    qual_open_delay_seconds: number;
+    qual_scores_champ_points: boolean;
+    qual_scoring: number;
+    qual_style: number;
+    race_style: number;
 }
 
 export interface LSS_TrackState {
@@ -187,6 +251,7 @@ export interface LSS_TrackState {
 export interface LSS_Track {
     track_id: number;
     track_name: string;
+    config_name?: string;
 }
 
 export interface LSS_Car {
