@@ -14,7 +14,7 @@ export interface LeagueSeasonSessions {
 }
 
 export interface LapChartData {
-    sucess: boolean;
+    success: boolean;
     session_info: LCD_SessionInfo;
     best_lap_num: number;
     best_lap_time: number;
@@ -24,6 +24,7 @@ export interface LapChartData {
     best_qual_lap_time: number;
     best_qual_lap_at: null | number;
     chunk_info: LCD_Chunk[];
+    last_updated?: string;
 }
 
 export interface LeagueDirectory {
@@ -56,12 +57,12 @@ export interface LCD_Chunk {
     display_name: string;
     lap_number: number;
     flags: number;
-    incident: false;
+    incident: boolean;
     session_time: number;
     session_start_time: null | number;
     lap_time: number;
-    team_fastest_lap: false;
-    personal_best_lap: false;
+    team_fastest_lap: boolean;
+    personal_best_lap: boolean;
     helmet: LCD_Helmet;
     license_level: number;
     car_number: string;
@@ -213,8 +214,7 @@ export interface LS_SeasonSummary {
 
 export interface LS_PointCar {
     car_id: number;
-    car_name: number;
-    team_car: false;
+    car_name: string;
 }
 
 export interface LS_PointsCarClass {
@@ -258,8 +258,9 @@ export interface M_Member {
     helmet: M_Helmet;
     last_login: string;
     member_since: string;
-    club_id: number;
-    club_name: number;
+    flair_id?: number;
+    flair_name?: string;
+    flair_shortname?: string;
     ai: boolean;
     licenses: M_License[];
 }
@@ -267,26 +268,28 @@ export interface M_Member {
 export interface M_License {
     category_id: number;
     category: string;
+    category_name: string;
     license_level: number;
     safety_rating: number;
     cpi: number;
-    irating: number;
+    irating?: number;
     tt_rating: number;
     mpr_num_races: number;
     color: string;
     group_name: string;
     group_id: number;
-    pro_promotable: boolean;
+    pro_promotable?: boolean;
+    seq: number;
     mpr_num_tts: number;
 }
 
 export interface M_Helmet {
-    pattern: 48;
-    color1: '000000';
-    color2: 'fff500';
-    color3: '000000';
-    face_type: 0;
-    helmet_type: 0;
+    pattern: number;
+    color1: string;
+    color2: string;
+    color3: string;
+    face_type: number;
+    helmet_type: number;
 }
 
 export interface CuratedLeagueTeamsInfo {
@@ -444,7 +447,7 @@ export interface ST_SimsessionTelemetry {
 
 export type SubsessionTelemetry = ST_SimsessionTelemetry[];
 
-export type CuratedTrackDisplayhInfo = {
+export type CuratedTrackDisplayInfo = {
     [name: string]: { short_display: string; display: string };
 };
 
