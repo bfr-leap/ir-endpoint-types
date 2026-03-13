@@ -9,12 +9,13 @@ export interface LeagueSeasons {
 export interface LeagueSeasonSessions {
     sessions: LSS_Session[];
     success: boolean;
+    subscribed: boolean;
     season_id: number;
     league_id: number;
 }
 
 export interface LapChartData {
-    sucess: boolean;
+    success: boolean;
     session_info: LCD_SessionInfo;
     best_lap_num: number;
     best_lap_time: number;
@@ -24,6 +25,7 @@ export interface LapChartData {
     best_qual_lap_time: number;
     best_qual_lap_at: null | number;
     chunk_info: LCD_Chunk[];
+    last_updated?: string;
 }
 
 export interface LeagueDirectory {
@@ -56,12 +58,12 @@ export interface LCD_Chunk {
     display_name: string;
     lap_number: number;
     flags: number;
-    incident: false;
+    incident: boolean;
     session_time: number;
     session_start_time: null | number;
     lap_time: number;
-    team_fastest_lap: false;
-    personal_best_lap: false;
+    team_fastest_lap: boolean;
+    personal_best_lap: boolean;
     helmet: LCD_Helmet;
     license_level: number;
     car_number: string;
@@ -111,24 +113,25 @@ export interface LCD_Track {
 
 export interface LSS_Session {
     cars: LSS_Car[];
-    consec_cautions_single_file: boolean;
-    damage_model: number;
-    do_not_count_caution_laps: boolean;
-    do_not_paint_cars: boolean;
+    consec_cautions_single_file?: boolean;
+    damage_model?: number;
+    do_not_count_caution_laps?: boolean;
+    do_not_paint_cars?: boolean;
     driver_changes: boolean;
     entry_count: number;
-    green_white_checkered_limit: number;
-    has_results: true;
+    green_white_checkered_limit?: number;
+    has_results: boolean;
+    heat_ses_info?: LSS_HeatSessionInfo;
     launch_at: string;
     league_id: number;
     league_season_id: number;
     lone_qualify: boolean;
-    max_ai_drivers: number;
-    must_use_diff_tire_types_in_race: boolean;
-    no_lapper_wave_arounds: boolean;
-    num_opt_laps: number;
-    pace_car_class_id: null;
-    pace_car_id: null;
+    max_ai_drivers?: number;
+    must_use_diff_tire_types_in_race?: boolean;
+    no_lapper_wave_arounds?: boolean;
+    num_opt_laps?: number;
+    pace_car_class_id: null | number;
+    pace_car_id: null | number;
     password_protected: boolean;
     practice_length: number;
     private_session_id: number;
@@ -137,20 +140,20 @@ export interface LSS_Session {
     race_laps: number;
     race_length: number;
     session_id: number;
-    short_parade_lap: boolean;
-    start_on_qual_tire: boolean;
-    start_zone: boolean;
+    short_parade_lap?: boolean;
+    start_on_qual_tire?: boolean;
+    start_zone?: boolean;
     status: number;
     subsession_id: number;
     team_entry_count: number;
-    telemetry_force_to_disk: number;
-    telemetry_restriction: number;
+    telemetry_force_to_disk?: number;
+    telemetry_restriction?: number;
     time_limit: number;
     track: LSS_Track;
     track_state: LSS_TrackState;
     weather: LSS_Weather;
-    winner_id: number;
-    winner_name: string;
+    winner_id?: number;
+    winner_name?: string;
 }
 
 export interface LSS_Weather {
@@ -169,6 +172,68 @@ export interface LSS_Weather {
     allow_fog: boolean;
     track_water: number;
     precip_option: number;
+    weather_summary?: LSS_WeatherSummary;
+    weather_url?: string;
+}
+
+export interface LSS_WeatherSummary {
+    max_precip_rate: number;
+    max_precip_rate_desc: string;
+    precip_chance: number;
+    skies_high: number;
+    skies_low: number;
+    temp_high: number;
+    temp_low: number;
+    temp_units: number;
+    wind_dir: number;
+    wind_high: number;
+    wind_low: number;
+    wind_units: number;
+}
+
+export interface LSS_HeatSessionInfo {
+    consolation_delta_max_field_size: number;
+    consolation_delta_session_laps: number;
+    consolation_delta_session_length_minutes: number;
+    consolation_first_max_field_size: number;
+    consolation_first_session_laps: number;
+    consolation_first_session_length_minutes: number;
+    consolation_num_position_to_invert: number;
+    consolation_num_to_consolation: number;
+    consolation_num_to_main: number;
+    consolation_run_always: boolean;
+    consolation_scores_champ_points: boolean;
+    created: string;
+    cust_id: number;
+    heat_caution_type: number;
+    heat_info_id: number;
+    heat_info_name: string;
+    heat_laps: number;
+    heat_length_minutes: number;
+    heat_max_field_size: number;
+    heat_num_from_each_to_main: number;
+    heat_num_position_to_invert: number;
+    heat_scores_champ_points: boolean;
+    heat_session_minutes_estimate: number;
+    hidden: boolean;
+    main_laps: number;
+    main_length_minutes: number;
+    main_max_field_size: number;
+    main_num_position_to_invert: number;
+    max_entrants: number;
+    open_practice: boolean;
+    pre_main_practice_length_minutes: number;
+    pre_qual_num_to_main: number;
+    pre_qual_practice_length_minutes: number;
+    qual_caution_type: number;
+    qual_laps: number;
+    qual_length_minutes: number;
+    qual_num_to_main: number;
+    qual_open_delay_seconds: number;
+    qual_scores_champ_points: boolean;
+    qual_scoring: number;
+    qual_style: number;
+    race_style: number;
 }
 
 export interface LSS_TrackState {
@@ -186,6 +251,7 @@ export interface LSS_TrackState {
 export interface LSS_Track {
     track_id: number;
     track_name: string;
+    config_name?: string;
 }
 
 export interface LSS_Car {
@@ -213,8 +279,7 @@ export interface LS_SeasonSummary {
 
 export interface LS_PointCar {
     car_id: number;
-    car_name: number;
-    team_car: false;
+    car_name: string;
 }
 
 export interface LS_PointsCarClass {
@@ -258,8 +323,9 @@ export interface M_Member {
     helmet: M_Helmet;
     last_login: string;
     member_since: string;
-    club_id: number;
-    club_name: number;
+    flair_id?: number;
+    flair_name?: string;
+    flair_shortname?: string;
     ai: boolean;
     licenses: M_License[];
 }
@@ -267,26 +333,28 @@ export interface M_Member {
 export interface M_License {
     category_id: number;
     category: string;
+    category_name: string;
     license_level: number;
     safety_rating: number;
     cpi: number;
-    irating: number;
+    irating?: number;
     tt_rating: number;
     mpr_num_races: number;
     color: string;
     group_name: string;
     group_id: number;
-    pro_promotable: boolean;
+    pro_promotable?: boolean;
+    seq: number;
     mpr_num_tts: number;
 }
 
 export interface M_Helmet {
-    pattern: 48;
-    color1: '000000';
-    color2: 'fff500';
-    color3: '000000';
-    face_type: 0;
-    helmet_type: 0;
+    pattern: number;
+    color1: string;
+    color2: string;
+    color3: string;
+    face_type: number;
+    helmet_type: number;
 }
 
 export interface CuratedLeagueTeamsInfo {
@@ -303,7 +371,6 @@ export interface CLTI_Team {
     team_id: number;
     team_name: string;
     team_members: number[];
-    team_logo: string;
 }
 
 export interface SimsessionResults {
@@ -326,7 +393,7 @@ export interface SSR_ResultsEntry {
     pace_percent: number;
 }
 
-export type DriverStatsMap = { [name: number]: DriverStats };
+export type DriverStatsMap = { [seasonId: number]: { [custId: number]: DriverStats } };
 
 export interface DriverStats {
     cust_id: number;
@@ -387,12 +454,14 @@ export interface ALS_LeagueInfo {
     name: string;
     journalistStyleName: string;
     journalistFineTunning: string;
+    otherFinetunning?: string;
     seasons: ALS_SeasonInfo[];
 }
 
 export interface ALS_SeasonInfo {
     season_id: number;
     car_id: number;
+    comment: string;
     events: ALS_EventInfo[];
 }
 
@@ -400,7 +469,6 @@ export interface ALS_EventInfo {
     comment: string;
     track_id: number;
     time: string;
-    event_id: string;
 }
 
 export interface ST_TelemetryDatum {
@@ -444,7 +512,7 @@ export interface ST_SimsessionTelemetry {
 
 export type SubsessionTelemetry = ST_SimsessionTelemetry[];
 
-export type CuratedTrackDisplayhInfo = {
+export type CuratedTrackDisplayInfo = {
     [name: string]: { short_display: string; display: string };
 };
 
@@ -482,6 +550,15 @@ export interface OTE_OnTrackRaceEvent {
 }
 
 export type OnTrackRaceEvents = OTE_OnTrackRaceEvent[];
+
+export type SimsessionHighlights = SimsessionHighlight[];
+
+export interface SimsessionHighlight {
+    time: number;
+    lookAt: number;
+    note: string[];
+    intro?: string;
+}
 
 export interface PodcastScriptedSrc {
     audioList: {
