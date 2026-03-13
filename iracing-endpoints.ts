@@ -394,7 +394,7 @@ export interface SSR_ResultsEntry {
     pace_percent: number;
 }
 
-export type DriverStatsMap = { [name: number]: DriverStats };
+export type DriverStatsMap = { [seasonId: number]: { [custId: number]: DriverStats } };
 
 export interface DriverStats {
     cust_id: number;
