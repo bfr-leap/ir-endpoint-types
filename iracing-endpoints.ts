@@ -551,14 +551,13 @@ export interface OTE_OnTrackRaceEvent {
 
 export type OnTrackRaceEvents = OTE_OnTrackRaceEvent[];
 
-export interface PodcastScriptedSrc {
-    audioList: {
-        location: string;
-        text: string;
-        poses: string[];
-        time: number;
-        lookAt: number;
-    }[];
+export type SimsessionHighlights = SimsessionHighlight[];
+
+export interface SimsessionHighlight {
+    time: number;
+    lookAt: number;
+    note: string[];
+    intro?: string;
 }
 
 export type ChartTable = { [key: string]: number | string }[];
